@@ -6,6 +6,8 @@ on: push
 # because the change _should_ have gone through PR, at which point the flow will have
 # already executed - but this is there just as a check.
 
+# TODO - consider also automating an `npm run update-snapshots` _only_ on pushes to non-main, here.
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -30,6 +32,9 @@ jobs:
       # Why is `dist/` in the `.gitignore`? So that developers don't see diffs show up while developing and worry that
       # they are responsible for checking it in. The `dist/` is, in a sense, the output of compiling the `.ts` source
       # code, and developers should only have to see or think about source code, not compiled "binaries")
+      # EDIT: Nevermind, I was wrong - if a file has been `git add`-ed, then it will still show up in `git status` even
+      # it matches a `.gitignore` directive. So - the solution described below (where this repo is the source code, and
+      # another repo is the build yaml "binary") is, in fact, the only good solution.
       #
       # In fact, ideally, this step would write the resultant `yaml` out to _another_ repo, so that there's clean
       # separation between source code (in this repo) and "binary" yaml output - but I'm not gonna bother implementing

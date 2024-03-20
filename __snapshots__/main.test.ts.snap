@@ -1,3 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Placeholder Empty 1`] = `Array []`;
+exports[`Placeholder Empty 1`] = `
+Array [
+  Object {
+    "apiVersion": "datadog.upbound.io/v1alpha1",
+    "forProvider": Object {
+      "dashboard": "{\\"title\\":\\"jackjack-cdk8s-demo Basic Observability Bundle Dashboard for cartservice\\",\\"widgets\\":[]}",
+    },
+    "kind": "DashboardJSON",
+    "metadata": Object {
+      "name": "test-chart-dashboard-c8f9124c",
+    },
+  },
+]
+`;

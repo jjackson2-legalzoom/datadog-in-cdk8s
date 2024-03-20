@@ -1,0 +1,6 @@
+apiVersion: datadog.upbound.io/v1alpha1
+kind: DashboardJSON
+metadata:
+  name: datadog-in-cdk8s-dashboard-c8b4f2ee
+forProvider:
+  dashboard: '{"title":"jackjack-cdk8s-demo Basic Observability Bundle Dashboard for cartservice","widgets":[]}'

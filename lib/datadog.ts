@@ -1,43 +1,41 @@
-// import { ApiObject } from 'cdk8s';
-// import { Construct } from 'constructs';
+import { ApiObject } from 'cdk8s';
+import { Construct } from 'constructs';
 
-// TODO - update tsconfig to compile .js as appropriate
+export interface BasicObservabilityBundleProps {
+  serviceName: string
+  friendlyServiceName?: string
+}
 
-// interface BasicObservabilityBundleProps {
-//   serviceName: string
-//   friendlyServiceName?: string
-// }
+type HydratedProps = {
+  serviceName: string
+  friendlyServiceName: string
+}
 
-// type HydratedProps = {
-//   serviceName: string
-//   friendlyServiceName: string
-// }
+export class BasicObservabilityBundle extends Construct {
+  constructor(scope: Construct, ns: string, props: BasicObservabilityBundleProps) {
+    super(scope, ns);
 
-// class BasicObservabilityBundle extends Construct {
-//   constructor(scope: Construct, ns: string, props: BasicObservabilityBundleProps) {
-//     super(scope, ns);
+    const hydratedProps = this.hydrateProps(props);
 
-//     const hydratedProps = this.hydrateProps(props);
+    new ApiObject(scope, 'dashboard', {
+      apiVersion: 'datadog.upbound.io/v1alpha1',
+      kind: 'DashboardJSON',
+      forProvider: {
+        dashboard: JSON.stringify({
+          title: `jackjack-cdk8s-demo Basic Observability Bundle Dashboard for ${hydratedProps.friendlyServiceName}`,
+          widgets: []
+        })
+      }
+    })
+  }
 
-//     new ApiObject(scope, 'dashboard', {
-//       apiVersion: 'datadog.upbound.io/v1alpha1',
-//       kind: 'DashboardJSON',
-//       forProvider: {
-//         dashboard: JSON.stringify({
-//           title: `jackjack-cdk8s-demo Basic Observability Bundle Dashboard for ${hydratedProps.friendlyServiceName}`,
-//           widgets: []
-//         })
-//       }
-//     })
-//   }
-
-//   hydrateProps(props: BasicObservabilityBundleProps): HydratedProps {
-//     return {
-//       serviceName: props.serviceName,
-//       friendlyServiceName: props.friendlyServiceName ?? props.serviceName.replace('-', ' ') // In real life we'd put this in title case
-//     }
-//   }
-// }
+  hydrateProps(props: BasicObservabilityBundleProps): HydratedProps {
+    return {
+      serviceName: props.serviceName,
+      friendlyServiceName: props.friendlyServiceName ?? props.serviceName.replace('-', ' ') // In real life we'd put this in title case
+    }
+  }
+}
 
 // class WidgetArrayBuilder {
 //   constructor()
