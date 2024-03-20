@@ -1,0 +1,45 @@
+# Build the output Yaml manifests that Argo will read
+# in order to sync resources to kubernetes.
+# Idempotent - i.e. a no-op if run twice.
+on: push
+# Intentionally applies to all branches - it _should_ be a no-op for merges to main,
+# because the change _should_ have gone through PR, at which point the flow will have
+# already executed - but this is there just as a check.
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      statuses: write
+      checks: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - run: npm install
+      - run: npm run build
+
+      # If this resulted in any changes to `dist/`, force-add and commit them.
+      #
+      # (Why force-add? Because `dist/` is in the `.gitignore`.
+      # Why is `dist/` in the `.gitignore`? So that developers don't see diffs show up while developing and worry that
+      # they are responsible for checking it in. The `dist/` is, in a sense, the output of compiling the `.ts` source
+      # code, and developers should only have to see or think about source code, not compiled "binaries")
+      #
+      # In fact, ideally, this step would write the resultant `yaml` out to _another_ repo, so that there's clean
+      # separation between source code (in this repo) and "binary" yaml output - but I'm not gonna bother implementing
+      # that for a Proof of Concept.
+      - run: |
+          git add -f dist/
+          if [[ $(git diff-index HEAD dist/ | wc -l) -ne 0 ]]; then
+            echo "Found updates"
+            git commit -m 'Update yaml in dist'
+            echo "Would git-push here, but want to avoid infinite loop in case I made a mistake"
+          else
+            echo "Nothing to commit - no new commit needed"
+          fi
