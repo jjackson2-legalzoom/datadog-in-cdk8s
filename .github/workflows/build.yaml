@@ -21,7 +21,7 @@ jobs:
           node-version: 18
           cache: 'npm'
 
-      - run: npm install
+      - run: npm ci
       - run: npm run build
 
       # If this resulted in any changes to `dist/`, force-add and commit them.
