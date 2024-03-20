@@ -41,7 +41,7 @@ jobs:
             git config --global user.email "sre-automation@legalzoom.com"
             git config --global user.name "SRE Automation"
             git commit -m 'Update yaml in dist'
-            echo "Would git-push here, but want to avoid infinite loop in case I made a mistake"
+            git push
           else
             echo "Nothing to commit - no new commit needed"
           fi
