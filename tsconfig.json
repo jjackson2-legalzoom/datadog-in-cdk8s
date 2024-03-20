@@ -10,6 +10,7 @@
       "es2016"
     ],
     "module": "CommonJS",
+    "outDir": "out/",
     "noEmit": false,
     "noEmitOnError": true,
     "noFallthroughCasesInSwitch": true,
@@ -29,6 +30,7 @@
     "**/*.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "out/"
   ]
 }
