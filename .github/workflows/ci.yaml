@@ -38,6 +38,8 @@ jobs:
           git add -f dist/
           if [[ $(git diff-index HEAD dist/ | wc -l) -ne 0 ]]; then
             echo "Found updates"
+            git config --global user.email "sre-automation@legalzoom.com"
+            git config --global user.name "SRE Automation"
             git commit -m 'Update yaml in dist'
             echo "Would git-push here, but want to avoid infinite loop in case I made a mistake"
           else
