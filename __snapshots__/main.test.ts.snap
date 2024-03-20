@@ -11,6 +11,9 @@ Array [
     "metadata": Object {
       "name": "test-chart-dashboard-c8f9124c",
     },
+    "providerConfigRef": Object {
+      "name": "datadog-provider-config",
+    },
   },
 ]
 `;

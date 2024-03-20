@@ -25,6 +25,9 @@ export class BasicObservabilityBundle extends Construct {
           title: `jackjack-cdk8s-demo Basic Observability Bundle Dashboard for ${hydratedProps.friendlyServiceName}`,
           widgets: []
         })
+      },
+      providerConfigRef: {
+        name: 'datadog-provider-config'
       }
     })
   }
