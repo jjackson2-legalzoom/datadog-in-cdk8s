@@ -4,15 +4,17 @@ exports[`Placeholder Empty 1`] = `
 Array [
   Object {
     "apiVersion": "datadog.upbound.io/v1alpha1",
-    "forProvider": Object {
-      "dashboard": "{\\"title\\":\\"jackjack-cdk8s-demo Basic Observability Bundle Dashboard for cartservice\\",\\"widgets\\":[]}",
-    },
     "kind": "DashboardJSON",
     "metadata": Object {
       "name": "test-chart-dashboard-c8f9124c",
     },
-    "providerConfigRef": Object {
-      "name": "datadog-provider-config",
+    "spec": Object {
+      "forProvider": Object {
+        "dashboard": "{\\"title\\":\\"jackjack-cdk8s-demo Basic Observability Bundle Dashboard for cartservice\\",\\"widgets\\":[]}",
+      },
+      "providerConfigRef": Object {
+        "name": "datadog-provider-config",
+      },
     },
   },
 ]

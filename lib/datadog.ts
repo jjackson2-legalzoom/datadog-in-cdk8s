@@ -20,14 +20,16 @@ export class BasicObservabilityBundle extends Construct {
     new ApiObject(scope, 'dashboard', {
       apiVersion: 'datadog.upbound.io/v1alpha1',
       kind: 'DashboardJSON',
-      forProvider: {
-        dashboard: JSON.stringify({
-          title: `jackjack-cdk8s-demo Basic Observability Bundle Dashboard for ${hydratedProps.friendlyServiceName}`,
-          widgets: []
-        })
-      },
-      providerConfigRef: {
-        name: 'datadog-provider-config'
+      spec: {
+        forProvider: {
+          dashboard: JSON.stringify({
+            title: `jackjack-cdk8s-demo Basic Observability Bundle Dashboard for ${hydratedProps.friendlyServiceName}`,
+            widgets: []
+          })
+        },
+        providerConfigRef: {
+          name: 'datadog-provider-config'
+        }
       }
     })
   }
