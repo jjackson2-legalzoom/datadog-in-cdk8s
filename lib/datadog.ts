@@ -180,7 +180,7 @@ interface WidgetLayout {
 
 interface WidgetDef {
   title: string,
-  title_size: number,
+  title_size: string, // Actually, "a number as a string"
   title_align: 'left' | 'right',
   show_legend: boolean,
   legend_layout: 'auto',
@@ -207,7 +207,7 @@ interface WidgetDefProps {
 function buildWidgetDef(props: WidgetDefProps): WidgetDef {
   return {
     title: props.title,
-    title_size: props.title_size ?? 16,
+    title_size: (props.title_size ?? 16).toString(),
     title_align: props.title_align ?? 'left',
     show_legend: props.show_legend ?? true,
     legend_layout: props.legend_layout ?? 'auto',
