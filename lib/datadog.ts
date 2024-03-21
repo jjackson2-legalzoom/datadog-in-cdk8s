@@ -117,7 +117,7 @@ export class BasicObservabilityBundle extends Construct {
 function buildHitByStatusString(serviceName: string, filters: [string, string][]): string {
   // TODO - default to `env:p` unless overridden
   filters.push(['service', serviceName])
-  return `sum:trace.opentelemetry.server.hits.by_http_status{${filters.map((k, v) => k + ':' + v).join(', ')}}.as_count()`
+  return `sum:trace.opentelemetry.server.hits.by_http_status{${filters.map((filter) => filter[0] + ':' + filter[1]).join(', ')}}.as_count()`
 }
 
 /***************
