@@ -80,7 +80,7 @@ export class BasicObservabilityBundle extends Construct {
         ],
       }),
       width: 4,
-      height: 0
+      height: 2
     })
 
     new ApiObject(scope, 'dashboard', {
