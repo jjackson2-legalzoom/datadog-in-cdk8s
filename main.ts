@@ -7,7 +7,9 @@ export class BasicObservabilityBundleDemoChart extends Chart {
     super(scope, id, props);
 
     new BasicObservabilityBundle(this, 'basic-observability-bundle', {
-      serviceName: 'cartservice'
+      serviceName: 'cartservice',
+      warningThreshold: 99,
+      targetThreshold: 90
     })
 
   }
