@@ -10,7 +10,7 @@ Array [
     },
     "spec": Object {
       "forProvider": Object {
-        "dashboard": "{\\"title\\":\\"jackjack-cdk8s-demo Basic Observability Bundle Dashboard for cartservice\\",\\"widgets\\":[]}",
+        "dashboard": "{\\"title\\":\\"jackjack-cdk8s-demo Basic Observability Bundle Dashboard for cartservice\\",\\"widgets\\":[],\\"template_variables\\":[],\\"layout_type\\":\\"ordered\\",\\"notify_list\\":[],\\"reflow_type\\":\\"fixed\\"}",
       },
       "providerConfigRef": Object {
         "name": "datadog-provider-config",

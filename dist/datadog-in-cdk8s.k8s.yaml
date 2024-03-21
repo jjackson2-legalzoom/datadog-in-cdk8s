@@ -4,6 +4,6 @@ metadata:
   name: datadog-in-cdk8s-dashboard-c8b4f2ee
 spec:
   forProvider:
-    dashboard: '{"title":"jackjack-cdk8s-demo Basic Observability Bundle Dashboard for cartservice","widgets":[]}'
+    dashboard: '{"title":"jackjack-cdk8s-demo Basic Observability Bundle Dashboard for cartservice","widgets":[],"template_variables":[],"layout_type":"ordered","notify_list":[],"reflow_type":"fixed"}'
   providerConfigRef:
     name: datadog-provider-config

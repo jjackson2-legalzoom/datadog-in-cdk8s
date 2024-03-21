@@ -24,7 +24,11 @@ export class BasicObservabilityBundle extends Construct {
         forProvider: {
           dashboard: JSON.stringify({
             title: `jackjack-cdk8s-demo Basic Observability Bundle Dashboard for ${hydratedProps.friendlyServiceName}`,
-            widgets: []
+            widgets: [],
+            template_variables: [],
+            layout_type: "ordered",
+            notify_list: [],
+            reflow_type: "fixed"
           })
         },
         providerConfigRef: {
