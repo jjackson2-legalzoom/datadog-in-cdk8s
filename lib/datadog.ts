@@ -64,24 +64,24 @@ export class BasicObservabilityBundle extends Construct {
       height: 2
     })
 
-    // widgetArrayBuilder.add({
-    //   definition: buildWidgetDef({
-    //     title: 'Traffic',
-    //     requests: [
-    //       buildWidgetRequest({
-    //         queries: [
-    //           {
-    //             data_source: 'metrics',
-    //             name: 'query1',
-    //             query: buildHitByStatusString(props.serviceName, [['env', 'p']])
-    //           }
-    //         ]
-    //       })
-    //     ],
-    //   }),
-    //   width: 4,
-    //   height: 0
-    // })
+    widgetArrayBuilder.add({
+      definition: buildWidgetDef({
+        title: 'Traffic',
+        requests: [
+          buildWidgetRequest({
+            queries: [
+              {
+                data_source: 'metrics',
+                name: 'query1',
+                query: buildHitByStatusString(props.serviceName, [['env', 'p']])
+              }
+            ]
+          })
+        ],
+      }),
+      width: 4,
+      height: 0
+    })
 
     new ApiObject(scope, 'dashboard', {
       apiVersion: 'datadog.upbound.io/v1alpha1',
