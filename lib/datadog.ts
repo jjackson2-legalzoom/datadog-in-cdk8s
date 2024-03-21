@@ -88,14 +88,14 @@ export class BasicObservabilityBundle extends Construct {
       kind: 'DashboardJSON',
       spec: {
         forProvider: {
-          dashboard: JSON.stringify({
+          dashboard: {
             title: `jackjack-cdk8s-demo Basic Observability Bundle Dashboard for ${hydratedProps.friendlyServiceName}`,
             widgets: widgetArrayBuilder.build(),
             template_variables: [],
             layout_type: "ordered",
             notify_list: [],
             reflow_type: "fixed"
-          })
+          }
         },
         providerConfigRef: {
           name: 'datadog-provider-config'
